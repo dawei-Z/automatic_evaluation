@@ -27,14 +27,14 @@ In this way, you can access the staffs' citation data in University of Liverpool
 Explaination: "hhindex" in the FinalResult represent the staff h-index of the whole department. e.g.: hhindex is 13 for UCL means there are at least 13 staff whose h-index is greater than 13 at UCL.
 
 # File Discription
-  # GoogleQuery.py:
+  ## GoogleQuery.py:
    Collect staff list from university website using google query for the website.
    Caution! It will override the existing list and it can not collect staff list from most university since it only contains one pattern of regular expression.
     
-   # GoogleScholarQuery.py:
+   ## GoogleScholarQuery.py:
    Perform google scholar query to get citation data then calculate the h-index.
     
-   # DataProcess.py:
+   ## DataProcess.py:
    Manipulate collected data then store the final result into a csv file.
     
 # Installation
