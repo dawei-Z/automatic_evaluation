@@ -114,5 +114,11 @@ def run():
         sub_data.to_csv(f2)
     print("DONE!")
 
+def read_data(file_name):
+    import pandas as pd
+    df1 = pd.read_csv(file_name)
+    df1 = df1.drop('Unnamed: 0', 1)
+    print(df1)
+
 
 print(timeit.timeit(run, number=1))
