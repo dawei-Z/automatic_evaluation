@@ -13,7 +13,8 @@ In order to read the result, add
     df1 = df1.drop('Unnamed: 0',1)
     df1
 
-to jupyter notebook(if you are using other ide just add print() function to print df1).
+to jupyter notebook.
+if you are using other ide or simple run the Python file just run read_data(<file name>)) in the dataProcess.py to see the result in the console
 
 If you are insterested in some citation data for a university please use following code on jupyter notebook.
 
@@ -23,8 +24,15 @@ If you are insterested in some citation data for a university please use followi
     df3
 
 In this way, you can access the staffs' citation data in University of Liverpool.
+Or run read_data('uniData\\<university name>.csv') in dataProcess.py to see the result in the console
 
 Explaination: "hhindex" in the FinalResult represent the staff h-index of the whole department. e.g.: hhindex is 13 for UCL means there are at least 13 staff whose h-index is greater than 13 at UCL.
+
+# Run the project
+To run the project to perform data collection of your insterst:
+1) Add your staff list to the staffLists folder.
+2) Run the staff_query(<list name>) in GoogleScholarQuery.py to collect the citation data of staffs in that list.
+3) Run read_data('uniData\\<list name>.csv') in dataProcess.py to see the result.
 
 # File Discription
   ## GoogleQuery.py:
