@@ -1,5 +1,4 @@
 import pandas as pd
-import timeit
 
 
 def get_hindex(citation_list):
@@ -15,7 +14,7 @@ def get_hindex(citation_list):
 
 def data_cleaning():
     """Clean the empty columns which will created in reindexing the DataFrame and h-index is NaN"""
-    with open('list.txt', 'r', encoding='utf-8-sig') as f:
+    with open('uniList.txt', 'r', encoding='utf-8-sig') as f:
         for line in f:
             temp_df = pd.read_csv('uniData\\' + line.rstrip() + '.csv')
             temp_df = temp_df.drop('Unnamed: 0', 1)
@@ -29,7 +28,7 @@ def manipulate_hhindex():
     data_cleaning()
     df = pd.DataFrame()
     result_dataset = pd.DataFrame()
-    with open('list.txt', 'r', encoding='utf-8-sig') as f:
+    with open('uniList.txt', 'r', encoding='utf-8-sig') as f:
         for line in f:
             temp_df = pd.read_csv('uniData\\' + line.rstrip() + '.csv')
             temp_df = temp_df.sort_values(by=['hindex'], ascending=False)
@@ -59,16 +58,16 @@ def manipulate_avg():
     data_cleaning()
     df = pd.DataFrame()
     result_dataset = pd.DataFrame()
-    with open('list.txt', 'r', encoding='utf-8-sig') as f:
+    with open('uniList.txt', 'r', encoding='utf-8-sig') as f:
         for line in f:
             sum = 0
             temp_df = pd.read_csv('uniData\\' + line.rstrip() + '.csv')
-            useful_data = temp_df.where(temp_df['hindex'] > 5)
+            useful_data = temp_df.where(temp_df['hindex'] > 1)
             useful_data = useful_data.drop('Unnamed: 0', 1)
             useful_data = useful_data.dropna()
             for hindex in useful_data['hindex']:
                 sum += hindex
-            count = len(temp_df.index)
+            count = len(useful_data.index)
             avg = sum / count
             temp_series = pd.Series({'university': line.rstrip(),
                                      'hindex_average': avg})
@@ -85,18 +84,9 @@ def manipulate_avg():
     return result_dataset
 
 
-def validation():
-    """Validate the collected data"""
-    with open('list.txt', 'r', encoding='utf-8-sig') as f:
-        for line in f:
-            temp_df = pd.read_csv('uniData\\' + line.rstrip() + '.csv')
-            length = len(temp_df.index)
-
-
-
 def difference(uniName, currentIndex):
     """Return the difference between the new rank and original rank(REF 2014)"""
-    with open('list.txt', 'r', encoding='utf-8-sig') as f:
+    with open('uniList.txt', 'r', encoding='utf-8-sig') as f:
         i = 1
         for line in f:
             if line.rstrip() == uniName:
@@ -106,6 +96,7 @@ def difference(uniName, currentIndex):
 
 
 def run():
+    """run the data manipulation"""
     with open('FinalResult_pattern1.csv', 'w', encoding='utf-8') as f1:
         temp_data = manipulate_hhindex()
         temp_data.to_csv(f1)
@@ -114,11 +105,15 @@ def run():
         sub_data.to_csv(f2)
     print("DONE!")
 
+
 def read_data(file_name):
+    """read the result file with input file name"""
     import pandas as pd
     df1 = pd.read_csv(file_name)
     df1 = df1.drop('Unnamed: 0', 1)
     print(df1)
 
+run()
 
-print(timeit.timeit(run, number=1))
+#  read_data("FinalResult_pattern2.csv")
+
