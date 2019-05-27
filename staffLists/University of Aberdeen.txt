@@ -2,18 +2,18 @@ Nigel Beacham
 George Coghil
 Matthew Collinson
 Ernesto Compatangelo
-PeterEdwards
-PeterGray
-FrankGuerin
-JimHunter
-Martin	Kollingbaum
-ChenghuaLin
-JudithMasthoff
-Chris	Mellish
+Peter Edwards
+Peter Gray
+Frank Guerin
+Jim Hunter
+Martin Kollingbaum
+Chenghua Lin
+Judith Masthoff
+Chris Mellish
 NirOren
 Jeff Pan
-WeiPang
-Ehud	Reiter
+Wei Pang
+Ehud Reiter
 Bruce Scharlau
 Derek Sleeman
 Yaji Sripada
